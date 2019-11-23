@@ -1,0 +1,36 @@
+{
+    "name": "laravel-crud-generator",
+    "version": "0.0.1",
+    "description": "tool to generate crud for laravel project",
+    "main": "dist/index.js",
+    "scripts": {
+        "build": "tsc lib/index.ts",
+        "start": "ts-node index.ts",
+        "test": "jest",
+        "coverage": "jest --coverage"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/jest": "^24.0.23",
+        "chai": "^4.2.0",
+        "husky": ">=1",
+        "jest": "^24.9.0",
+        "lint-staged": ">=8",
+        "prettier": "^1.19.1",
+        "ts-jest": "^24.2.0",
+        "ts-node": "^8.5.2",
+        "typescript": "^3.7.2"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{ts,js,css,json,md}": [
+            "prettier --write",
+            "git add"
+        ]
+    }
+}
