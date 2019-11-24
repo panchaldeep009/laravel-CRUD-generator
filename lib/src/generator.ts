@@ -1,17 +1,13 @@
 import { Entity } from '../types/Entity';
 import { validSchema } from '../validators/entity.validator';
-
-// type Entity = {
-//     name: string;
-//     method?: 'all' | ('GET' | 'POST' | 'PUT/PATCH' | 'DELETE')[];
-// };
-// type Schema = Entity[];
+import { validProjectPath } from '../validators/project-dir.validator';
 
 export class CRUD {
     public schema: Entity[] = [];
+    private projectDir?: string;
 
-    constructor(schema?: Entity[]) {
-        schema && this.setSchema(schema);
+    constructor(laravelProjectDir: string) {
+        this.projectDir = validProjectPath(laravelProjectDir);
     }
 
     /**

@@ -1,9 +1,10 @@
-import { CRUD } from '../src';
+import { CRUD } from '..';
 import { ValidationError } from 'yup';
 
 describe('Schema Initialization Check', () => {
     it('initialize validate schema', () => {
-        const crud = new CRUD([{ name: 'test_test' }]);
+        const crud = new CRUD('/');
+        crud.setSchema([{ name: 'test_test' }]);
         expect(crud.schema[0].name).toBe('TestTest');
     });
 
@@ -17,7 +18,8 @@ describe('Schema Initialization Check', () => {
 
         invalidValues.forEach((invalidSchemaValues: any) => {
             try {
-                new CRUD(invalidSchemaValues);
+                const crud = new CRUD('/');
+                crud.setSchema(invalidSchemaValues);
                 fail('Should failed');
             } catch (error) {
                 expect(error.name).toBe(ValidationError.name);
